@@ -1,0 +1,47 @@
+html, body {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 60px calc(100vh - 60px);
+  grid-template-areas: "header" "main";
+}
+
+header, main, .list, .map {
+  border: 1px black solid;
+}
+
+main {
+  overflow-y: auto;
+  display: grid;
+  grid-template-rows: calc(100vh - 60px - 50px) 50px calc(100vh - 60px - 50px);
+  grid-template-areas: "map" "toggle" "list";
+}
+
+@media (min-width: 768px) {
+  main {
+    grid-template-rows: unset;
+    grid-template-columns: minmax(200px, 3fr) 9fr;
+    grid-template-areas: "list map";
+  }
+
+  .toggle {
+    display: none;
+  }
+}
+
+.map {
+  grid-area: map;
+}
+
+.toggle {
+  grid-area: toggle;
+}
+
+.list {
+  grid-area: list;
+  overflow: auto;
+}
